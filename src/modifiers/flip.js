@@ -21,7 +21,7 @@ export function flip({ state, options }: ModifierArguments<Options>) {
     fallbackPlacements = defaultFallbackPlacements,
     padding = 0,
   } = options;
-  const overflow = state.modifiersData.detectOverflow.visibleArea;
+  const overflow = state.modifiersData['detectOverflow:flip'].overflowOffsets;
   const flipIndex = state.modifiersData.flip.index;
 
   const paddingObject = mergePaddingObject(
@@ -65,7 +65,7 @@ export default ({
   enabled: true,
   phase: 'main',
   fn: flip,
-  requires: ['detectOverflow'],
+  requires: ['detectOverflow:flip'],
   optionallyRequires: ['offset'],
   data: { index: 0 },
 }: Modifier<Options>);
